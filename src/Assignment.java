@@ -41,8 +41,8 @@ public class Assignment {
      * * @return A formatted string containing the name, due date, priority, and status.
      */
     public String toString() {
-        return  "Assignment: " + name + "\nDue Date: " + dueDate + "\nPriority: " + priority +
-                "\nCompleted: " + (isCompleted ? "Yes" : "No") + "\n";
+        return "Assignment: " + name + ", " + dueDate + ", " + priority + "priority, " + isCompleted;
+        //return  "Assignment: " + name + "\nDue Date: " + dueDate + "\nPriority: " + priority +       "\nCompleted: " + (isCompleted ? "Yes" : "No") + "\n";
     }
 
 
@@ -69,6 +69,14 @@ public class Assignment {
      */
     public int getPriority(){
         return priority;
+    }
+
+    /**
+     * Gets the status of the assignment.
+     * @return if assignment is completed
+     */
+    public int getStatus(){
+        return isCompleted;
     }
 
 

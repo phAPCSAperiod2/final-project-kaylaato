@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class AssignmentManager {
     // INSTANCE VARIABLES ---------------------------------------------------------------------------------------------------------
-    private ArrayList<Assignment> assignmentList; // The list storing all assignment objects
+    public ArrayList<Assignment> assignmentList; // The list storing all assignment objects
 
     // CONSTRUCTOR ----------------------------------------------------------------------------------------------------------------
     /**
@@ -65,6 +65,14 @@ public class AssignmentManager {
             output += assignmentList.get(i).toString() + "\n";
         }
         return output;
+    }
+
+    public String toStringCompleted(){
+        for(int i = 0; i < assignmentList.size(); i++){
+            if (assignmentList.get(i).getStatus() = true){
+                assignmentList.removeAssignment(i);
+            }
+        }
     }
 
     /**
