@@ -9,7 +9,7 @@ import java.time.LocalDate; //formats date in YYYY-MM-DD
  */
 public class Scheduler {
     // INSTANCE VARIABLES ---------------------------------------------------------------------------------------------------------
-    private AssignmentManager manager;
+    public AssignmentManager manager;
 
     // CONSTRUCTOR ----------------------------------------------------------------------------------------------------------------
     public Scheduler() {

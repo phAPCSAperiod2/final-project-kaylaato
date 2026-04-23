@@ -7,10 +7,10 @@
  */
 public class Assignment {
     // INSTANCE VARIABLES ---------------------------------------------------------------------------------------------------------
-    String name;                // name of assignemnt
-    String dueDate;             // due date of assignment (format: year-month-date, ex. 2026-04-13)
-    int priority;               // prioirty of assignment (1-5)
-    boolean isCompleted;        // completion of assignment
+    private String name;                // name of assignemnt
+    private String dueDate;             // due date of assignment (format: year-month-date, ex. 2026-04-13)
+    private int priority;               // prioirty of assignment (1-5)
+    private boolean isCompleted;        // completion of assignment
 
     // CONSTRUCTOR ----------------------------------------------------------------------------------------------------------------
     /**
@@ -25,7 +25,7 @@ public class Assignment {
         this.name = name;
         this.dueDate = dueDate;
         this.priority = priority;
-        isCompleted = false;
+        this.isCompleted = false;
     }
 
     // METHODS --------------------------------------------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ public class Assignment {
      * * @return A formatted string containing the name, due date, priority, and status.
      */
     public String toString() {
-        return "Assignment: " + name + ", " + dueDate + ", " + priority + "priority, " + isCompleted;
+        return "Assignment: " + name + ", " + dueDate + ", " + priority + " priority level, " + isCompleted;
         //return  "Assignment: " + name + "\nDue Date: " + dueDate + "\nPriority: " + priority +       "\nCompleted: " + (isCompleted ? "Yes" : "No") + "\n";
     }
 
@@ -75,7 +75,7 @@ public class Assignment {
      * Gets the status of the assignment.
      * @return if assignment is completed
      */
-    public int getStatus(){
+    public boolean getStatus(){
         return isCompleted;
     }
 
@@ -103,11 +103,9 @@ public class Assignment {
 
     /**
      * Updates the priority level of the assignment.
-     * * @param newPriority The new priority level (1-5).
-     * @return The updated priority level.
+     * @param newPriority The new priority level (1-5).
      */
-    public int newPriority(int newPriority){
-        priority = newPriority;
-        return priority;
+    public void setPriority(int newPriority) {
+        this.priority = newPriority;
     }
 }

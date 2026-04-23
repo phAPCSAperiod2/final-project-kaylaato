@@ -68,9 +68,32 @@ public class AssignmentManager {
     }
 
     public String toStringCompleted(){
-        for(int i = 0; i < assignmentList.size(); i++){
-            if (assignmentList.get(i).getStatus() = true){
-                assignmentList.removeAssignment(i);
+        String output = "--- Assignment List ---\n";
+        for (int i = 0; i < assignmentList.size(); i++) {
+            if (assignmentList.get(i).getStatus() == true) {
+                output += assignmentList.get(i).toString() + "\n";
+            }
+        }
+        return output;
+    }
+
+    /**
+     * Sorts the assignment list by priority in ascending order (1 to 5)
+     * using a Bubble Sort algorithm.
+     *
+     * @author Gemini
+     */
+    public void sortByPriorityLow() {
+        int n = assignmentList.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                // Compare priority of current assignment with the next one
+                if (assignmentList.get(j).getPriority() > assignmentList.get(j + 1).getPriority()) {
+                    // Swap assignments
+                    Assignment temp = assignmentList.get(j);
+                    assignmentList.set(j, assignmentList.get(j + 1));
+                    assignmentList.set(j + 1, temp);
+                }
             }
         }
     }
@@ -80,13 +103,14 @@ public class AssignmentManager {
      * using a Bubble Sort algorithm.
      *
      * @author Gemini
+     * @collaborator Kayla To
      */
-    public void sortByPriority() {
+    public void sortByPriorityHigh() {
         int n = assignmentList.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 // Compare priority of current assignment with the next one
-                if (assignmentList.get(j).getPriority() > assignmentList.get(j + 1).getPriority()) {
+                if (assignmentList.get(j).getPriority() < assignmentList.get(j + 1).getPriority()) {
                     // Swap assignments
                     Assignment temp = assignmentList.get(j);
                     assignmentList.set(j, assignmentList.get(j + 1));
