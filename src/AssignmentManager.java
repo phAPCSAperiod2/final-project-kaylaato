@@ -11,6 +11,8 @@ import java.util.ArrayList;
 public class AssignmentManager {
     // INSTANCE VARIABLES ---------------------------------------------------------------------------------------------------------
     public ArrayList<Assignment> assignmentList; // The list storing all assignment objects
+    private Assignment[][] priorityGrid = new Assignment[5][10];
+    private int[] rowCounts = new int[5]; // how many assignments are in each prioirty
 
     // CONSTRUCTOR ----------------------------------------------------------------------------------------------------------------
     /**
@@ -139,6 +141,43 @@ public class AssignmentManager {
                 }
             }
         }
+    }
+
+    // 2D ARRAY IMPLEMENTATION --------------------------------------------------------------------------------------------------
+    /**
+     * Places an assignment into the 2D dashboard grid based on its priority.
+     * * @param a The assignment to add to the grid.
+     * @return true if successfully added, false if the priority level is full.
+     *
+     * @author Gemini
+     */
+    public boolean addAssignmentToGrid(Assignment a) {
+        int row = a.getPriority() - 1; // Map priority 1-5 to index 0-4
+
+        if (rowCounts[row] < 10) {
+            priorityGrid[row][rowCounts[row]] = a;
+            rowCounts[row]++;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Returns a formatted string of the 2D Priority Dashboard.
+     * @return A string representation of the grid.
+     *
+     * @author Gemini
+     */
+    public String getDashboardString() {
+        String layout = "=== PRIORITY DASHBOARD ===\n";
+        for (int i = 0; i < priorityGrid.length; i++) {
+            layout += "Level " + (i + 1) + ": ";
+            for (int j = 0; j < rowCounts[i]; j++) {
+                layout += "[" + priorityGrid[i][j].getName() + "] ";
+            }
+            layout += "\n";
+        }
+        return layout;
     }
 
 }

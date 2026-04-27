@@ -1,18 +1,21 @@
 public class Main {
     public static void main(String[] args) {
-        // create assignment manager object
-        AssignmentManager manager = new AssignmentManager();
-
         // create scheduler object
         Scheduler myScheduler = new Scheduler();
 
+        // create assignment manager object
+        AssignmentManager manager = myScheduler.manager;
+
         // 1) test adding assignments
-        Assignment assign1 = new Assignment("Math Review", "2026-04-20", 3);
-        myScheduler.manager.addAssignment(assign1);
-        Assignment assign2 = new Assignment("CSA Final Project", "2026-04-15", 4);
-        myScheduler.manager.addAssignment(assign2);
-        Assignment assign3 = new Assignment("Psychology Reading 5.6b", "2026-04-16", 2);
-        myScheduler.manager.addAssignment(assign3);
+        Assignment a1 = new Assignment("Math Review", "2026-04-20", 3);
+        myScheduler.manager.addAssignment(a1);
+        Assignment a2 = new Assignment("CSA Final Project", "2026-04-15", 4);
+        myScheduler.manager.addAssignment(a2);
+        Assignment a3 = new Assignment("Psychology Reading 5.6b", "2026-04-16", 2);
+        myScheduler.manager.addAssignment(a3);
+        manager.addAssignmentToGrid(a1);
+        manager.addAssignmentToGrid(a2);
+        manager.addAssignmentToGrid(a3);
 
         System.out.println("--- INITIAL LIST ---");
         System.out.println(manager.toString());
@@ -37,5 +40,9 @@ public class Main {
         for (Assignment a : myScheduler.manager.getAllAssignments()) {
              System.out.println(a.getName() + " -> Start by: " + myScheduler.getSuggestedStartDate(a));
         }
+
+        // 5) test 2D array implementation
+        System.out.println(manager.getDashboardString());
+
     }
 }
