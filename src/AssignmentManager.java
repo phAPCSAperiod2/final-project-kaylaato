@@ -46,6 +46,12 @@ public class AssignmentManager {
         }
     }
 
+    public void removeAssignment(Assignment a) {
+    if (a != null) {
+        assignmentList.remove(a);
+    }
+    }
+
     /**
      * Retrieves the entire list of assignments.
      *
@@ -62,7 +68,7 @@ public class AssignmentManager {
      * @return A formatted string representation of the full assignment list.
      */
     public String toString() {
-        String output = "--- Assignment List ---\n";
+        String output = "\n--- Assignment List ---\n";
         for (int i = 0; i < assignmentList.size(); i++) {
             output += assignmentList.get(i).toString() + "\n";
         }
@@ -70,7 +76,7 @@ public class AssignmentManager {
     }
 
     public String toStringCompleted(){
-        String output = "--- Assignment List ---\n";
+        String output = "\n--- Assignment List ---\n";
         for (int i = 0; i < assignmentList.size(); i++) {
             if (assignmentList.get(i).getStatus() == true) {
                 output += assignmentList.get(i).toString() + "\n";
@@ -179,5 +185,7 @@ public class AssignmentManager {
         }
         return layout;
     }
+
+    
 
 }
