@@ -3,7 +3,7 @@
  *
  * @author Kayla To
  * @collaborators Gemini
- * @version 4/14/2026
+ * @version 5/5/2026
  */
 public class Assignment {
     // INSTANCE VARIABLES ---------------------------------------------------------------------------------------------------------
@@ -37,12 +37,15 @@ public class Assignment {
     }
 
     /**
-     * Returns a string representation of the assignment details.
-     * * @return A formatted string containing the name, due date, priority, and status.
+     * Returns a clean, tabular string representation of the assignment.
+     * Optimized for display in sorted lists.
+     *
      */
+    @Override
     public String toString() {
-        return "Assignment: " + name + ", " + dueDate + ", " + priority + " priority level, " + isCompleted;
-        //return  "Assignment: " + name + "\nDue Date: " + dueDate + "\nPriority: " + priority +       "\nCompleted: " + (isCompleted ? "Yes" : "No") + "\n";
+        String statusBracket = isCompleted ? "[X]" : "[ ]";
+        return String.format("%-4s %-20s | Due: %-12s | Prio: %d",
+                            statusBracket, name, dueDate, priority);
     }
 
 

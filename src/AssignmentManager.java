@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
  * @author Kayla To
  * @collaborators Gemini
- * @version 4/14/2026
+ * @version 5/5/2026
  */
 public class AssignmentManager {
     // INSTANCE VARIABLES ---------------------------------------------------------------------------------------------------------
@@ -68,50 +68,39 @@ public class AssignmentManager {
      * @return A formatted string representation of the full assignment list.
      */
     public String toString() {
-        String output = "\n--- Assignment List ---\n";
-        for (int i = 0; i < assignmentList.size(); i++) {
-            output += assignmentList.get(i).toString() + "\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n--- Sorted Assignment List ---\n");
+        sb.append(String.format("%-4s %-20s | %-17s | %-10s\n", "ST", "NAME", "DUE DATE", "PRIORITY"));
+        sb.append("------------------------------------------------------------\n");
+        for (Assignment a : assignmentList) {
+            sb.append(a.toString()).append("\n");
         }
-        return output;
-    }
-
-    public String toStringCompleted(){
-        String output = "\n--- Assignment List ---\n";
-        for (int i = 0; i < assignmentList.size(); i++) {
-            if (assignmentList.get(i).getStatus() == true) {
-                output += assignmentList.get(i).toString() + "\n";
-            }
-        }
-        return output;
+        return sb.toString();
     }
 
     /**
-     * Sorts the assignment list by priority in ascending order (1 to 5)
-     * using a Bubble Sort algorithm.
+     * Generates a simple numbered list of assignment names.
      *
-     * @author Gemini
+     * @return A vertically formatted string of assignment names for menus.
      */
-    public void sortByPriorityLow() {
-        int n = assignmentList.size();
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                // Compare priority of current assignment with the next one
-                if (assignmentList.get(j).getPriority() > assignmentList.get(j + 1).getPriority()) {
-                    // Swap assignments
-                    Assignment temp = assignmentList.get(j);
-                    assignmentList.set(j, assignmentList.get(j + 1));
-                    assignmentList.set(j + 1, temp);
-                }
-            }
+    public String toStringList() {
+        if (assignmentList.isEmpty()) {
+            return "[ No assignments found ]";
         }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("");
+
+        for (int i = 0; i < assignmentList.size(); i++) {
+            sb.append(String.format(" %d. %s\n", (i + 1), assignmentList.get(i).getName()));
+        }
+
+        return sb.toString();
     }
 
     /**
      * Sorts the assignment list by priority in ascending order (1 to 5)
      * using a Bubble Sort algorithm.
-     *
-     * @author Gemini
-     * @collaborator Kayla To
      */
     public void sortByPriorityHigh() {
         int n = assignmentList.size();
@@ -131,8 +120,6 @@ public class AssignmentManager {
     /**
      * Sorts the assignment list by due date chronologically
      * using a Bubble Sort algorithm.
-     *
-     * @author Gemini
      */
     public void sortByDueDate() {
         int n = assignmentList.size();
@@ -152,10 +139,9 @@ public class AssignmentManager {
     // 2D ARRAY IMPLEMENTATION --------------------------------------------------------------------------------------------------
     /**
      * Places an assignment into the 2D dashboard grid based on its priority.
-     * * @param a The assignment to add to the grid.
+     * @param The assignment to add to the grid.
      * @return true if successfully added, false if the priority level is full.
      *
-     * @author Gemini
      */
     public boolean addAssignmentToGrid(Assignment a) {
         int row = a.getPriority() - 1; // Map priority 1-5 to index 0-4
@@ -172,7 +158,6 @@ public class AssignmentManager {
      * Returns a formatted string of the 2D Priority Dashboard.
      * @return A string representation of the grid.
      *
-     * @author Gemini
      */
     public String getDashboardString() {
         String layout = "=== PRIORITY DASHBOARD ===\n";
@@ -186,6 +171,18 @@ public class AssignmentManager {
         return layout;
     }
 
-    
+    /**
+     * Synchronizes the 2D Priority Grid with the current Assignment List.
+     * This should be called whenever an assignment is edited, added, or removed.
+     */
+    public void refreshGrid() {
+        this.priorityGrid = new Assignment[5][10];
+        this.rowCounts = new int[5];
+
+        for (Assignment a : assignmentList) {
+            addAssignmentToGrid(a);
+        }
+    }
+
 
 }
