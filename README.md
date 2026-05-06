@@ -107,7 +107,7 @@ It solves the problem of:
 ---
 
 ## 🔹 Class Diagram
-*(Insert image or link here)*
+![Class Diagram](images/class-diagram.png)
 
 Example:
 ```
