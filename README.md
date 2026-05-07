@@ -1,142 +1,216 @@
 # 📚 Assignment Manager
 
-## 🔹 What This Software Does
-Assignment Manager is a command-line Java application designed to help users organize, track, and prioritize their academic or personal assignments.
+A command-line productivity application built in Java to help users organize, prioritize, and track assignments efficiently.
 
-Users can:
-- Add and manage assignments with due dates and priority levels
-- View assignments sorted by priority or due date
+---
+
+# 1. Project Description
+
+Assignment Manager is a terminal-based Java application designed to help students and other users stay organized by managing assignments and deadlines in one place. Users can add assignments, sort them by due date or priority, mark tasks as completed, edit assignment details, and view assignments through a visual priority dashboard. The project demonstrates object-oriented programming concepts, data structures, sorting algorithms, and scheduling logic while providing a practical solution for time management and productivity.
+
+---
+
+# 2. Features
+
+- Add new assignments with:
+  - Assignment name
+  - Due date
+  - Priority level
+- View all assignments in a structured list
+- Sort assignments by:
+  - Priority
+  - Due date
+- Edit assignment information
 - Mark assignments as completed
-- Edit assignment details
-- Visualize tasks using a **2D priority dashboard**
-- Get **suggested start dates** based on urgency
-
-The program focuses on improving productivity and time management through structured organization.
-
----
-
-## 🔹 Who It’s For
-This software is designed for:
-- Students managing multiple assignments and deadlines
-- Anyone who wants a simple, structured task tracker
-- Users who prefer a lightweight, terminal-based productivity tool
-
-It solves the problem of:
-> Losing track of deadlines and not knowing when to start assignments.
+- Remove assignments from the list
+- Visualize assignments using a **2D priority dashboard**
+- Generate **suggested start dates** based on urgency and priority
+- Menu-driven user interaction through the terminal
+- Dynamic assignment storage using `ArrayList`
 
 ---
 
-## 🔹 How to Run the Program
+# 3. Code Structure and Design
 
-### ✅ Requirements
-- Java JDK (version 8 or higher)
-- A terminal or IDE (VS Code, IntelliJ, etc.)
+The project follows an object-oriented design with separate classes responsible for different parts of the program.
 
-### ▶️ Steps
-1. Clone the repository:
-   ```bash
-   git clone <your-repo-link>
-   ```
+## Main Classes
 
-2. Navigate into the project folder:
-   ```bash
-   cd <your-folder-name>
-   ```
+### `Assignment`
+Represents a single assignment object.
 
-3. Compile the program:
-   ```bash
-   javac Main.java
-   ```
-
-4. Run the program:
-   ```bash
-   java Main
-   ```
-
----
-
-## 🔹 Technical Overview
-
-### 🧩 Main Classes
-
-**`Assignment`**
-- Represents a single task
-- Stores:
+Responsibilities:
+- Stores assignment data:
   - Name
-  - Due date (YYYY-MM-DD)
-  - Priority (1–5)
+  - Due date
+  - Priority level
   - Completion status
-- Includes getters/setters and formatted display output
+- Provides getter and setter methods
+- Formats assignment information for display
 
-**`AssignmentManager`**
-- Manages all assignments using an `ArrayList`
-- Handles:
-  - Adding/removing assignments
-  - Sorting (priority and due date using Bubble Sort)
-  - Display formatting
-- Implements a **2D array (5x10)** as a priority dashboard
+---
 
-**`Scheduler`**
+### `AssignmentManager`
+Handles assignment storage and management.
+
+Responsibilities:
+- Stores assignments using an `ArrayList<Assignment>`
+- Adds, removes, edits, and displays assignments
+- Sorts assignments by priority and due date
+- Maintains the 2D priority dashboard
+
+Data Structures Used:
+- `ArrayList<Assignment>` for dynamic assignment storage
+- `Assignment[][] priorityGrid` for dashboard visualization
+- `int[] rowCounts` to track assignments in each row
+
+---
+
+### `Scheduler`
+Responsible for scheduling logic.
+
+Responsibilities:
 - Calculates suggested start dates
-- Uses `LocalDate` to subtract days based on priority
-- Higher priority = earlier start recommendation
-
-**`Main`**
-- Controls user interaction
-- Handles:
-  - Menu navigation
-  - Input/output
-  - Editing and completing assignments
+- Uses Java `LocalDate` methods for date calculations
+- Recommends earlier start dates for higher-priority assignments
 
 ---
 
-### 🗂️ Key Data Structures
-- `ArrayList<Assignment>` → dynamic storage of assignments
-- `Assignment[][] priorityGrid` → 2D dashboard organized by priority levels
-- `int[] rowCounts` → tracks how many assignments are in each priority row
+### `Main`
+Controls the user interface and program flow.
+
+Responsibilities:
+- Displays menus
+- Handles user input and validation
+- Connects all program components together
+- Executes user-selected actions
 
 ---
 
-### ⚙️ Core Features
-- Sorting algorithms (Bubble Sort)
-- 2D array visualization
-- Input validation and menu navigation
-- Object-oriented design with encapsulation
-- Date calculations using `LocalDate`
+## Object-Oriented Design Concepts
+
+This project demonstrates several important AP Computer Science A concepts:
+
+- **Encapsulation**
+  - Assignment data is stored in private variables with controlled access through methods.
+
+- **Abstraction**
+  - Complex scheduling and management logic is separated into dedicated classes.
+
+- **Object Interaction**
+  - `Main` communicates with `AssignmentManager` and `Scheduler`, which interact with `Assignment` objects.
+
+- **Data Structures**
+  - Uses both `ArrayList` collections and 2D arrays for organization and visualization.
 
 ---
 
-## 🔹 Class Diagram
+## UML Diagram
+
+The UML class diagram for this project is included below:
+
 ![Class Diagram](images/class-diagram.png)
 
-Example:
-```
+Example relationship flow:
+
+```text
 Main → Scheduler → AssignmentManager → Assignment
 ```
 
 ---
 
-## 🔹 Known Limitations / Future Improvements
+# 4. How to Run the Program
 
-### ⚠️ Current Limitations
-- No persistent storage (data is lost when program exits)
-- User must type exact assignment names to edit or complete
-- Limited input validation (e.g., date format is assumed correct)
-- Fixed 2D array size (max 10 assignments per priority level)
+## Requirements
 
-### 🚀 Future Improvements
-- Save/load data from a file
-- Add GUI (JavaFX or Swing)
-- Improve search (ID system instead of name matching)
-- Replace Bubble Sort with more efficient algorithms
-- Add categories or tags for assignments
-- Allow flexible dashboard sizing
+- Java JDK 8 or higher
+- Terminal, Command Prompt, or Java IDE
+  - VS Code
+  - IntelliJ IDEA
+  - Eclipse
 
 ---
 
-## 🎯 Final Notes
-This project demonstrates:
-- Object-oriented programming
-- Data structure implementation (ArrayList + 2D arrays)
-- Algorithmic thinking (sorting, scheduling logic)
-- User-focused software design
+## Step-by-Step Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repository-link>
+```
+
+---
+
+### 2. Open the Project Folder
+
+```bash
+cd <your-project-folder>
+```
+
+---
+
+### 3. Compile the Program
+
+```bash
+javac Main.java
+```
+
+---
+
+### 4. Run the Program
+
+```bash
+java Main
+```
+
+---
+
+## Example User Actions
+
+When the program starts, users can choose menu options such as:
+
+```text
+1. Add Assignment
+2. View Assignments
+3. Sort by Priority
+4. Sort by Due Date
+5. Mark Assignment Complete
+6. Edit Assignment
+7. View Dashboard
+8. Exit
+```
+
+Example input:
+
+```text
+Enter assignment name: Math Homework
+Enter due date (YYYY-MM-DD): 2026-05-15
+Enter priority (1-5): 5
+```
+
+---
+
+# 5. Development Process
+
+One challenge during development was organizing assignments visually using a 2D array dashboard while still maintaining a flexible assignment list. This was solved by combining an `ArrayList` for storage with a separate 2D array for visualization purposes.
+
+A feature I am especially proud of is the suggested start-date system, which helps users plan ahead instead of waiting until the last minute to begin assignments.
+
+If more development time were available, I would add persistent file storage so assignments could be saved and loaded automatically between sessions. I would also improve input validation and potentially create a graphical user interface using JavaFX.
+
+---
+
+# 6. Use of AI Tools
+
+## AI Assistance
+
+ChatGPT and Gemini was used to help brainstorm project organization ideas, improve README formatting, debug logic issues, and refine explanations for documentation. All AI-assisted suggestions and code were reviewed, tested, modified as needed, and fully understood by the student before being included in the project.
+
+---
+
+# 7. Author Information
+
+**Student Name:** *Kayla To*  
+**Course:** AP Computer Science A
+
+This project helped strengthen my understanding of object-oriented programming, data structures, class design, and building user-focused software applications in Java.
