@@ -111,6 +111,8 @@ The UML class diagram for this project is included below:
 
 ![Class Diagram](images/class-diagram.png)
 
+https://drive.google.com/file/d/1bd7gBZffEQFyYFdfDoXVMdpjZRodydNz/view?usp=sharing
+
 Example relationship flow:
 
 ```text
@@ -210,7 +212,7 @@ ChatGPT and Gemini was used to help brainstorm project organization ideas, impro
 
 # 7. Author Information
 
-**Student Name:** *Kayla To*  
+**Student Name:** *Kayla To*
 **Course:** AP Computer Science A
 
 This project helped strengthen my understanding of object-oriented programming, data structures, class design, and building user-focused software applications in Java.
